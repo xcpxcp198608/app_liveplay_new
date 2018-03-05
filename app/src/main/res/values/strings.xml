@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">z-lp</string>
+
+    <string name="notice">Notice</string>
+    <string name="warning">Warning</string>
+    <string name="confirm">Confirm</string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Cancel</string>
+    <string name="send">Send</string>
+    <string name="agree">Agree</string>
+    <string name="reject">Reject</string>
+    <string name="retry">Retry</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ad">Advertisement</string>
+    <string name="search">search</string>
+    <string name="detail">Detail</string>
+    <string name="pass">Pass</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="register">Register</string>
+    <string name="create">Create</string>
+    <string name="create_account">Create an account?</string>
+    <string name="username">UserName</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="password_different">password different</string>
+    <string name="username_empty">username input empty</string>
+    <string name="password_empty">password input empty</string>
+    <string name="email_empty">email input empty</string>
+    <string name="register_fail">Register fail , please try again</string>
+    <string name="login_fail">Login fail , please check user information and try again</string>
+    <string name="no_support">Sorry, The device is not supported!</string>
+    <string name="network_error">Network connect error , please check </string>
+    <string name="copyright">All resources are from internet, for educational purpose only</string>
+    <string name="add_favorite"> add to favorite</string>
+    <string name="remove_favorite"> remove from favorite</string>
+    <string name="device_notice">The device is not supported!</string>
+    <string name="exit_notice">Press back again to exit program</string>
+    <string name="error_play">Channel error, please try again later!</string>
+    <string name="update_notice">Notice</string>
+    <string name="login_info">Account login on other device,please login again</string>
+    <string name="app_no_install">Selected app not installed, please go to app market to download and install</string>
+    <string name="confirm_exit">Do you confirm exit?</string>
+    <string name="data_loading">Loading...</string>
+    <string name="data_load_error">Load failure, please try again later</string>
+    <string name="favorite_load_empty">Favorites folder is empty</string>
+    <string name="history_load_empty">History folder is empty</string>
+    <string name="search_load_empty">No result match search</string>
+    <string name="favorite_empty">favorite is empty</string>
+    <string name="hi">Hi</string>
+    <string name="playing">Now playing</string>
+    <string name="notice1">Please go to app market to download and install</string>
+    <string name="back">PRESS BACK TO EXIT</string>
+    <string name="skip_ad">SKIP ADS </string>
+    <string name="skip_ad1">JOIN GOLD PRO TO SKIP ALL ADS </string>
+    <string name="skip">SKIP</string>
+    <string name="authority">PRESS BACK TO EXIT</string>
+    <string name="notice2">You can enjoy 60 seconds preview in </string>
+    <string name="notice22"> minutes. (0 minute means exit and enter again preview.) </string>
+    <string name="notice3">Preview over, next preview after 5 minutes, please join GOLD to watch full</string>
+    <string name="agreement">Agreement</string>
+    <string name="error_msg1">Channel down</string>
+    <string name="error_msg2">Video/Voice don’t sync</string>
+    <string name="error_msg3">Channel and name don’t match</string>
+    <string name="error_msg4">Channel content repeat</string>
+    <string name="error_input_format">Message input format error</string>
+    <string name="install_notice">To use this function, install </string>
+    <string name="install_notice1">install now? </string>
+    <string name="agreement_content">LivePlay is absolutely legal and contain only links to other sites on the Internet （youtube, ZStream, Dizimag, TheVideo,etc). It does not host or upload any videos, films or media files.  LivePlay simply aggregates links in a convenient, user-friendly interface.  LivePlay is not responsible for the accuracy, compliance, copyright, legality, decency, or any other aspect of the content of other linked sites.  If you have any legal issues, please contact the appropriate media file owners or host sites.   Any legal issues regarding the free online tv, tv shows and movies on this application should be taken up with the actual file hosts and providers themselves, as we’re not affiliated with them.
+
+\r\n\nIn case of copyright infringement, please directly contact the responsible parties.  LivePlay operates as a search engine of TV, TV Shows and movies content found publicly on the internet, in principle conducting in the same way as Google.  However, LivePlay strongly believes in the protection of intellectual property and would be willing to assist when possible and applicable.  LivePlay does not accept responsibility or contents hosted on third party websites, nor do we upload videos ourselves or encourage others to do so.  The videos are streamed directly form the third-party video sharing services mentioned above.  All other trademarks, logos, and images are the property of their respective and rightful owners.
+
+\r\n\nUse LivePlay at your own risk.</string>
+    <string name="notice_protect">Parental control:\nTo setup,please type in your password and confirm. If not required, please press cancel</string>
+    <string name="password_format_error">password format error</string>
+    <string name="password_setting_success">password setting successfully</string>
+    <string name="parent_control_disabled">Parental Control disabled</string>
+    <string name="password_incorrect">password incorrect</string>
+    <string name="username_incorrect">username incorrect</string>
+    <string name="ok">OK</string>
+    <string name="consent_title">CONSENT TO COLLECTION AND USE OF DATA</string>
+    <string name="consent_content">We would like to inform you regarding the “Consent to Collection and Use of Data”
+
+By Confirming “OK” below, you consent to Legacy Direct LLC collecting information from your device to allow us to dynamically serve more relevant promoted content and product support and improve our products and services.  This consent applies to all Apps you have installed or may install that contain Legacy Direct technology.
+
+The data that we collect may include information about your device, location, email, application, and browsing usage.
+
+The data we collect may be shared within our group and with select business partners, including those based outside the United States.   The data privacy regulation that apply in countries outside the USA may not offer the same level of protection as provided for inside the USA.
+
+All data that is collected is tied to your Android Advertising ID which can be reset under following path: “Google Settings->Ads->Reset advertising ID”.
+
+By confirming “OK” below, you affirm that you are over 18 years of age.
+
+We hope that you wish to help us improve your experience.  If yes, click confirm “OK”.</string>
+    <string name="download_title">Downloading Resources</string>
+    <string name="download_message">Please wait for download to finish.</string>
+    <string name="install_error">install error</string>
+    <string name="download_error">download error</string>
+    <string name="report">report</string>
+    <string name="start">start</string>
+    <string name="time_demo">00:00:00</string>
+    <string name="pay">Pay</string>
+    <string name="preview">Preview</string>
+    <string name="clean_history">press confirm to clean all history</string>
+
+</resources>

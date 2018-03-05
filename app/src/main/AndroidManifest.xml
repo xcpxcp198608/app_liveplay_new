@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.live.play">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="com.wiatec.btv_launcher.provide.Read" />
+
+    <application
+        android:name=".instance.Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        tools:replace="android:theme"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".view.activity.SplashActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.activity.MainActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".view.activity.AdScreenActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".view.activity.UpgradeActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".view.activity.AdVideoActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".view.activity.ChannelActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.activity.ChannelTypeActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.activity.PlayActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".view.activity.PlayFMActivity" />
+        <activity android:name=".view.activity.ChannelTypeActivity1" />
+        <activity android:name=".view.activity.ChannelTypeActivity2" />
+        <activity
+            android:name=".view.activity.PlayLiveActivity"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="com.wiatec.bplay.view.activity.PlayLiveActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.activity.AutomaticPlayActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.wiatec.bplay.view.activity.AutomaticPlayActivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.activity.BVisionActivity"></activity>
+    </application>
+
+</manifest>

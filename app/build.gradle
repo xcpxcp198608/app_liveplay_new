@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.live.play"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 204
+        versionName "v2.0.5"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file("/Users/xuchengpeng/KeyStore/234.jks")
+            storePassword KEYSTORE_PASSWORD
+            keyAlias "234"
+            keyPassword KEY_PASSWORD
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            minifyEnabled false
+            zipAlignEnabled true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def fileName = ""
+            if (variant.buildType.name == 'release') {
+                fileName = applicationId + "_" + variant.versionName + "_" + variant.versionCode + "_${releaseTime()}.apk"
+            } else if (variant.buildType.name == 'debug') {
+                fileName = applicationId + "_" + variant.versionName + "_" + variant.versionCode + "_debug.apk"
+            }
+            outputFileName = new File(fileName)
+        }
+    }
+
+    repositories {
+        maven {
+            url '/Users/xuchengpeng/.m2/repository'
+        }
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+static def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    //dagger2
+    compile 'com.google.dagger:dagger:2.4'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
+    compile 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.paypal.sdk:paypal-android-sdk:2.15.3'
+    compile 'com.afollestad.material-dialogs:commons:0.9.5.0'
+
+    implementation 'com.px.library:module_common:1.0.0'
+}

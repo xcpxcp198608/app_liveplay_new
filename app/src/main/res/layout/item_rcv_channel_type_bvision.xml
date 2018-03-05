@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:layout_margin="10dp"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/bg_item_channel_type_bvision"
+    android:padding="3dp"
+    android:layout_width="636dp"
+    android:layout_height="94dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_hold1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:background="@color/colorTranslucent3"
+        android:layout_gravity="bottom"
+        android:id="@+id/textView"
+        tools:text="USA"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:gravity="center"
+        android:textSize="33sp"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>

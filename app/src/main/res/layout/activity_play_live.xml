@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout
+    android:id="@+id/flPlay"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SurfaceView
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/pbPlay"
+        android:layout_gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+    <TextView
+        android:id="@+id/tvNetSpeed"
+        android:gravity="center"
+        android:layout_gravity="center"
+        tools:text="11.22kbs"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:visibility="gone"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        tools:text="Living"
+        android:padding="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="200dp"
+        android:background="@drawable/bg_live_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <WebView
+        android:id="@+id/webView"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </WebView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginLeft="3dp"
+            android:src="@drawable/bvision_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Switch
+            android:layout_marginLeft="5dp"
+            android:id="@+id/switchDanMu"
+            android:checked="true"
+            android:layout_marginRight="5dp"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comment"/>
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:textColor="@android:color/white"
+            android:imeOptions="actionSend"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btSend"
+            android:text="Send"
+            android:padding="0dp"
+            android:textColor="@color/colorGray"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_button_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>
+</layout>
