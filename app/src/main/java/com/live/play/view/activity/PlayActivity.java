@@ -28,6 +28,7 @@ import com.google.gson.reflect.TypeToken;
 import com.px.common.adapter.BaseRecycleAdapter;
 import com.px.common.http.HttpMaster;
 import com.px.common.http.listener.StringListener;
+import com.px.common.http.pojo.ResultInfo;
 import com.px.common.utils.AESUtil;
 import com.px.common.utils.AppUtil;
 import com.px.common.utils.EmojiToast;
@@ -38,7 +39,6 @@ import com.px.common.utils.TimeUtil;
 import com.live.play.R;
 import com.live.play.adapter.PlayChannelAdapter;
 import com.live.play.databinding.ActivityPlayBinding;
-import com.live.play.entity.ResultInfo;
 import com.live.play.instance.Application;
 import com.live.play.instance.Constant;
 import com.live.play.manager.PlayManager;
@@ -339,7 +339,7 @@ public class PlayActivity extends AppCompatActivity implements SurfaceHolder.Cal
                         ResultInfo resultInfo = new Gson().fromJson(s,
                                 new TypeToken<ResultInfo>(){}.getType());
                         if(resultInfo == null) return;
-                        if(resultInfo.getCode() == ResultInfo.CODE_OK) {
+                        if(resultInfo.getCode() == 200) {
                             EmojiToast.show(resultInfo.getMessage(), EmojiToast.EMOJI_SMILE);
                         }else{
                             EmojiToast.show(resultInfo.getMessage(), EmojiToast.EMOJI_SAD);
@@ -449,6 +449,20 @@ public class PlayActivity extends AppCompatActivity implements SurfaceHolder.Cal
                 event.getKeyCode() == KeyEvent.KEYCODE_MEDIA_NEXT){
             currentPlayPosition = 0;
             playManager.nextChannel();
+        }
+        if(event.getKeyCode() == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE){
+            if(mediaPlayer.isPlaying()){
+                mediaPlayer.pause();
+                binding.ibtStartStop.setBackgroundResource(R.drawable.bg_button_play);
+            }else{
+                mediaPlayer.start();
+                binding.ibtStartStop.setBackgroundResource(R.drawable.bg_button_pause);
+            }
+        }
+        if(event.getKeyCode() == KeyEvent.KEYCODE_MEDIA_STOP){
+            releaseMediaPlayer();
+            playManager.stopView(tag);
+            this.finish();
         }
         return super.onKeyDown(keyCode, event);
     }

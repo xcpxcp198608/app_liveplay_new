@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.px.common.http.HttpMaster;
 import com.px.common.http.listener.StringListener;
-import com.live.play.entity.ResultInfo;
 import com.live.play.instance.Constant;
 import com.live.play.pojo.ChannelTypeInfo;
+import com.px.common.http.pojo.ResultInfo;
 
 import java.io.IOException;
 import java.util.List;
@@ -35,7 +35,7 @@ public class ChannelTypeProvider implements LoadServiceWithParam<List<ChannelTyp
                             onLoadListener.onLoad(false, null);
                             return;
                         }
-                        List<ChannelTypeInfo> channelTypeInfoList = resultInfo.getData();
+                        List<ChannelTypeInfo> channelTypeInfoList = resultInfo.getDataList();
                         if(channelTypeInfoList == null || channelTypeInfoList.size() <= 0){
                             onLoadListener.onLoad(false, null);
                             return;

@@ -1,6 +1,5 @@
 package com.live.play.presenter;
 
-import com.live.play.entity.ResultInfo;
 import com.live.play.model.AdImageProvider;
 import com.live.play.model.ChannelLoadService;
 import com.live.play.model.ChannelProvider;
@@ -11,6 +10,7 @@ import com.live.play.pojo.ChannelInfo;
 import com.live.play.pojo.ImageInfo;
 import com.live.play.pojo.LiveChannelInfo;
 import com.live.play.view.activity.Channel;
+import com.px.common.http.pojo.ResultInfo;
 
 import java.util.List;
 

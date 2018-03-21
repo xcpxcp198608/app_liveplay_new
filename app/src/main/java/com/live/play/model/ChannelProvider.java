@@ -6,8 +6,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.px.common.http.HttpMaster;
 import com.px.common.http.listener.StringListener;
+import com.px.common.http.pojo.ResultInfo;
 import com.px.common.utils.Logger;
-import com.live.play.entity.ResultInfo;
 import com.live.play.instance.Constant;
 import com.live.play.pojo.ChannelInfo;
 import com.live.play.pojo.LiveChannelInfo;
@@ -42,7 +42,7 @@ public class ChannelProvider implements ChannelLoadService<List<ChannelInfo>> {
                             onLoadListener.onLoad(false, null);
                             return;
                         }
-                        List<ChannelInfo> channelInfoList = resultInfo.getData();
+                        List<ChannelInfo> channelInfoList = resultInfo.getDataList();
                         if(channelInfoList == null || channelInfoList.size() <= 0){
                             onLoadListener.onLoad(false, null);
                             return;
@@ -122,7 +122,7 @@ public class ChannelProvider implements ChannelLoadService<List<ChannelInfo>> {
                             onLoadListener.onLoad(false, null);
                             return;
                         }
-                        List<ChannelInfo> channelInfoList = resultInfo.getData();
+                        List<ChannelInfo> channelInfoList = resultInfo.getDataList();
                         if(channelInfoList == null || channelInfoList.size() <= 0){
                             onLoadListener.onLoad(false, null);
                             return;

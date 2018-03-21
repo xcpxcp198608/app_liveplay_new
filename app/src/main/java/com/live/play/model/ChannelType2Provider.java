@@ -2,8 +2,10 @@ package com.live.play.model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.live.play.pojo.ChannelType1Info;
 import com.px.common.http.HttpMaster;
 import com.px.common.http.listener.StringListener;
+import com.px.common.http.pojo.ResultInfo;
 import com.px.common.utils.Logger;
 import com.live.play.instance.Constant;
 import com.live.play.pojo.ChannelType2Info;
@@ -25,8 +27,13 @@ public class ChannelType2Provider implements LoadServiceWithParam<List<ChannelTy
                     @Override
                     public void onSuccess(String s) throws IOException {
 //                        Logger.d(s);
-                        List<ChannelType2Info> channelType2InfoList = new Gson().fromJson(s,
-                                new TypeToken<List<ChannelType2Info>>(){}.getType());
+                        ResultInfo<ChannelType2Info> resultInfo = new Gson().fromJson(s,
+                                new TypeToken<ResultInfo<ChannelType2Info>>(){}.getType());
+                        if(resultInfo == null){
+                            onLoadListener.onLoad(false, null);
+                            return;
+                        }
+                        List<ChannelType2Info> channelType2InfoList = resultInfo.getDataList();
                         if(channelType2InfoList != null && channelType2InfoList.size() > 0){
                             onLoadListener.onLoad(true, channelType2InfoList);
                         }else{

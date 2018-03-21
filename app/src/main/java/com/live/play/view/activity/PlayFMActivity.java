@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.px.common.http.HttpMaster;
 import com.px.common.http.listener.StringListener;
+import com.px.common.http.pojo.ResultInfo;
 import com.px.common.image.ImageMaster;
 import com.px.common.utils.AppUtil;
 import com.px.common.utils.EmojiToast;
@@ -31,7 +32,6 @@ import com.px.common.utils.NetUtil;
 import com.px.common.utils.SPUtil;
 import com.live.play.R;
 import com.live.play.databinding.ActivityFmPlayBinding;
-import com.live.play.entity.ResultInfo;
 import com.live.play.instance.Application;
 import com.live.play.instance.Constant;
 import com.live.play.manager.PlayManager;
@@ -278,7 +278,7 @@ public class PlayFMActivity extends AppCompatActivity implements PlayManager.Pla
                         if(resultInfo == null){
                             return;
                         }
-                        if(resultInfo.getCode() == ResultInfo.CODE_OK) {
+                        if(resultInfo.getCode() == 200) {
                             EmojiToast.show(resultInfo.getMessage(), EmojiToast.EMOJI_SMILE);
                         }else{
                             EmojiToast.show(resultInfo.getMessage(), EmojiToast.EMOJI_SAD);

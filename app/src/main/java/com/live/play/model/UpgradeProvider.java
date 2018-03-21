@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.px.common.http.HttpMaster;
 import com.px.common.http.listener.StringListener;
+import com.px.common.http.pojo.ResultInfo;
 import com.px.common.utils.AppUtil;
-import com.live.play.entity.ResultInfo;
 import com.live.play.instance.Constant;
 import com.live.play.pojo.UpgradeInfo;
 
@@ -36,11 +36,11 @@ public class UpgradeProvider implements LoadService<UpgradeInfo> {
                             onLoadListener.onLoad(false, null);
                             return;
                         }
-                        if(resultInfo.getCode() != ResultInfo.CODE_OK){
+                        if(resultInfo.getCode() != 200){
                             onLoadListener.onLoad(false, null);
                             return;
                         }
-                        UpgradeInfo upgradeInfo = resultInfo.getData().get(0);
+                        UpgradeInfo upgradeInfo = resultInfo.getData();
                         if(upgradeInfo == null){
                             onLoadListener.onLoad(false, null);
                             return;

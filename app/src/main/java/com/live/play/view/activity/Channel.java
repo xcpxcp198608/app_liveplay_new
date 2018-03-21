@@ -1,9 +1,9 @@
 package com.live.play.view.activity;
 
-import com.live.play.entity.ResultInfo;
 import com.live.play.pay.PayResultInfo;
 import com.live.play.pojo.ChannelInfo;
 import com.live.play.pojo.LiveChannelInfo;
+import com.px.common.http.pojo.ResultInfo;
 
 import java.util.List;
 
