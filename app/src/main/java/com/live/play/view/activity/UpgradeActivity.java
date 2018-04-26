@@ -88,7 +88,7 @@ public class UpgradeActivity extends BaseActivity<SplashPresenter> implements Sp
                         binding.pbUpgrade.setProgress(100);
                         binding.llProgress.setVisibility(View.GONE);
                         if(AppUtil.isApkCanInstall(downloadInfo.getPath(), downloadInfo.getName())){
-                            AppUtil.installApk(downloadInfo.getPath(), downloadInfo.getName(), "");
+                            AppUtil.installApk(downloadInfo.getPath(), downloadInfo.getName(), "com.live.play.fileprovider");
                         }else{
                             EmojiToast.show("download error", EmojiToast.EMOJI_SAD);
                         }

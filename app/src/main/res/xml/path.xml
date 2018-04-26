@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <external-files-path name="download" path="download"/>
+    <external-files-path name="apk" path="apk"/>
+    <external-files-path name="ad_images" path="ad_images"/>
+</resources>
