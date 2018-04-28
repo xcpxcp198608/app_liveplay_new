@@ -192,7 +192,7 @@ public class PlayActivity extends AppCompatActivity implements SurfaceHolder.Cal
                 public void onPrepared(MediaPlayer mp) {
                     binding.ibtStartStop.setBackgroundResource(R.drawable.bg_button_pause);
                     binding.pbPlay.setVisibility(View.GONE);
-                    EmojiToast.show(playManager.getChannelInfo().getName()+" playing" , EmojiToast.EMOJI_SMILE);
+                    EmojiToast.show(playManager.getChannelInfo().getName() + " playing" , EmojiToast.EMOJI_SMILE);
                     binding.tvNetSpeed.setVisibility(View.GONE);
                     mediaPlayer.start();
                     setDuration();
@@ -379,6 +379,9 @@ public class PlayActivity extends AppCompatActivity implements SurfaceHolder.Cal
                     binding.llController.setVisibility(View.GONE);
                     binding.rcvChannel.setVisibility(View.GONE);
                 }else{
+                    if(mediaPlayer == null){
+                        return;
+                    }
                     if(mediaPlayer.isPlaying()){
                         binding.ibtStartStop.setBackgroundResource(R.drawable.bg_button_pause);
                     }else{

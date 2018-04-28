@@ -124,19 +124,39 @@ public class PlayManager {
         if(type == 1){ //live
             if(mPlayListener != null) mPlayListener.play(url);
         }else if(type == 3) { //relay
-            HttpMaster.get(url)
-                    .enqueue(new StringListener() {
-                        @Override
-                        public void onSuccess(String s) throws IOException {
-                            if(s == null) return;
-                            if(mPlayListener != null) mPlayListener.play(s);
-                        }
+            List<String> list = parseUrl(url);
+            if(list != null && list.size() > 1){
+                final String url1 = list.get(0);
+                HttpMaster.get(list.get(1))
+                        .enqueue(new StringListener() {
+                            @Override
+                            public void onSuccess(String s) throws IOException {
+                                if (s == null) return;
+                                if (mPlayListener != null) mPlayListener.play(url1 + "#" + s);
+                            }
 
-                        @Override
-                        public void onFailure(String e) {
-                            Logger.d(e);
-                        }
-                    });
+                            @Override
+                            public void onFailure(String e) {
+                                Logger.d(e);
+                            }
+                        });
+
+
+            }else {
+                HttpMaster.get(url)
+                        .enqueue(new StringListener() {
+                            @Override
+                            public void onSuccess(String s) throws IOException {
+                                if (s == null) return;
+                                if (mPlayListener != null) mPlayListener.play(s);
+                            }
+
+                            @Override
+                            public void onFailure(String e) {
+                                Logger.d(e);
+                            }
+                        });
+            }
         }else if(type == 2){ // app
             if(mPlayListener != null) mPlayListener.launchApp(AESUtil.decrypt(channelInfo.getUrl(),
                     AESUtil.KEY));
@@ -216,12 +236,16 @@ public class PlayManager {
         }
         List<String> urlList1 = new ArrayList<>();
         for (String u : urlList){
-            if (u.contains("protv.company")){
-                String streamToken = (String) SPUtil.get("streamToken", "123");
-                u = u.trim() + "?token=" + streamToken;
-            }
-            urlList1.add(u);
+            urlList1.add(setToken(u));
         }
         return urlList1;
+    }
+
+    private static String setToken(String u){
+        if (u.contains("protv.company")){
+            String streamToken = (String) SPUtil.get("streamToken", "123");
+            u = u.trim() + "?token=" + streamToken;
+        }
+        return u;
     }
 }
