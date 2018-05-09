@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="5dp"
+    android:layout_margin="8dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@drawable/bg_item_channel"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <TextView
+        android:id="@+id/tvTime"
+        tool:text="09:30 pm ET"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@android:color/holo_orange_dark"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
+
+    <TextView
+        android:id="@+id/tvTeam1"
+        tool:text="sfdsf"
+        android:textSize="35sp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:text="VS"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tvTeam2"
+        tool:text="sfdsf"
+        android:textSize="35sp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcvData"
+        android:layout_weight="3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

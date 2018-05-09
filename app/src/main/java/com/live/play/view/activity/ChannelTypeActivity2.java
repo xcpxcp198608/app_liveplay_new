@@ -62,7 +62,13 @@ public class ChannelTypeActivity2 extends BaseActivity<ChannelType2Presenter> im
             @Override
             public void onItemClick(View view, int position) {
                 ChannelType2Info channelType2Info = channelType2InfoList.get(position);
-                if(channelType2Info.getFlag() == 1){
+                if(channelType2Info.getFlag() == 3){
+                    Intent intent = new Intent(ChannelTypeActivity2.this, SportEventActivity.class);
+                    intent.putExtra("key", channelType2Info.getTag());
+                    startActivity(intent);
+                }else if(channelType2Info.getFlag() == 2){
+                    AppUtil.launchApp(ChannelTypeActivity2.this, channelType2Info.getTag());
+                }else if(channelType2Info.getFlag() == 1){
                     AppUtil.launchApp(ChannelTypeActivity2.this, channelType2Info.getTag());
                 } else {
                     Intent intent = new Intent(ChannelTypeActivity2.this, ChannelActivity.class);

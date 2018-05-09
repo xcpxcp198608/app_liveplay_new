@@ -30,6 +30,9 @@ public final class Constant {
         public static final String live_channel = live_base + "channel/";
         public static final String danmu_url = "http://blive.bvision.live:8804/html/danmu.html";
 
+
+        public static final String sports_event = "http://apius.protv.company/v1/sports/get_match.do?token=41892a3cde2fe83ca98db7df9b81b3d5&id=";
+
     }
 
     public static final class path{

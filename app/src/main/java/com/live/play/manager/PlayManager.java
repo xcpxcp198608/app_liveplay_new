@@ -38,6 +38,7 @@ public class PlayManager {
     private HistoryChannelDao historyChannelDao;
 
     public PlayManager(List<ChannelInfo> channelInfoList, int currentPosition) {
+        if(channelInfoList == null || channelInfoList.size() <= 0)
         this.channelInfoList = channelInfoList;
         this.currentPosition = currentPosition;
         historyChannelDao = HistoryChannelDao.getInstance();
