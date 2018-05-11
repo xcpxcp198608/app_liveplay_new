@@ -238,7 +238,7 @@ public class PlayActivity extends AppCompatActivity implements SurfaceHolder.Cal
                     mediaPlayer.start();
                 }
             });
-        } catch (IOException e) {
+        } catch (Exception e) {
             Logger.d(e.getMessage());
         }
     }
