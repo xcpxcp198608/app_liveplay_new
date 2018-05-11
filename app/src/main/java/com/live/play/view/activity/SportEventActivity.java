@@ -20,6 +20,7 @@ public class SportEventActivity extends BaseActivity<SportEventPresenter> implem
 
     private ActivitySportEventBinding binding;
     private SportEventAdapter adapter;
+    private String key = "";
 
     @Override
     protected SportEventPresenter createPresenter() {
@@ -30,7 +31,7 @@ public class SportEventActivity extends BaseActivity<SportEventPresenter> implem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sport_event);
-        String key = getIntent().getStringExtra("key");
+        key = getIntent().getStringExtra("key");
         presenter.load(key);
     }
 
@@ -43,7 +44,7 @@ public class SportEventActivity extends BaseActivity<SportEventPresenter> implem
         }
         binding.llLoading.setVisibility(View.GONE);
         if(adapter == null){
-            adapter = new SportEventAdapter(SportEventActivity.this, sportEventInfoList);
+            adapter = new SportEventAdapter(SportEventActivity.this, sportEventInfoList, key);
             binding.rcvSportEvent.setAdapter(adapter);
         }
         binding.rcvSportEvent.setLayoutManager(new LinearLayoutManager(this));

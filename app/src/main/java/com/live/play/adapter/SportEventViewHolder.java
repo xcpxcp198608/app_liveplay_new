@@ -16,6 +16,7 @@ public class SportEventViewHolder extends RecyclerView.ViewHolder {
     public TextView tvTime;
     public TextView tvTeam1;
     public TextView tvTeam2;
+    public TextView tvVS;
     public RecyclerView rcvData;
 
     public SportEventViewHolder(View itemView) {
@@ -23,6 +24,7 @@ public class SportEventViewHolder extends RecyclerView.ViewHolder {
         tvTime = itemView.findViewById(R.id.tvTime);
         tvTeam1 = itemView.findViewById(R.id.tvTeam1);
         tvTeam2 = itemView.findViewById(R.id.tvTeam2);
+        tvVS = itemView.findViewById(R.id.tvVS);
         rcvData = itemView.findViewById(R.id.rcvData);
 
     }

@@ -21,10 +21,12 @@ public class SportEventAdapter extends BaseRecycleAdapter<SportEventViewHolder> 
 
     private List<SportEventInfo> sportEventInfoList;
     private Context mContext;
+    private String key;
 
-    public SportEventAdapter(Context context, List<SportEventInfo> sportEventInfoList) {
+    public SportEventAdapter(Context context, List<SportEventInfo> sportEventInfoList, String key) {
         this.sportEventInfoList = sportEventInfoList;
         this.mContext = context;
+        this.key = key;
     }
 
     @Override
@@ -44,6 +46,10 @@ public class SportEventAdapter extends BaseRecycleAdapter<SportEventViewHolder> 
         holder.tvTeam1.setText(sportEventInfo.getMatch_guest());
         holder.tvTeam2.setText(sportEventInfo.getMatch_master());
         holder.rcvData.setLayoutManager(new GridLayoutManager(CommonApplication.getContext(), 5));
+
+        if("36".equals(key)){
+            holder.tvVS.setVisibility(View.GONE);
+        }
 
         List<SportEventInfo.TvData> tvDataList = sportEventInfo.getTv_data();
         if(tvDataList != null && tvDataList.size() >0) {

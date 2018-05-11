@@ -33,6 +33,7 @@
         android:layout_height="match_parent" />
 
     <TextView
+        android:id="@+id/tvVS"
         android:text="VS"
         android:textSize="30sp"
         android:textStyle="italic"

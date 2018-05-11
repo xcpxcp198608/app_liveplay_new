@@ -28,7 +28,7 @@ public class SportEventProvider implements LoadServiceWithParam<List<SportEventI
                     public void onSuccess(String s) throws IOException {
                         SportEventResultInfo sportEventResultInfo = new Gson().fromJson(s,
                                 new TypeToken<SportEventResultInfo>(){}.getType());
-                        Logger.d(sportEventResultInfo.toString());
+//                        Logger.d(sportEventResultInfo.toString());
                         if(sportEventResultInfo.getError_code() != 0) {
                             onLoadListener.onLoad(false, null);
                             return;
