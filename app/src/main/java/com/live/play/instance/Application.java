@@ -4,7 +4,9 @@ import com.px.common.constant.CommonApplication;
 import com.live.play.pojo.ChannelInfo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -17,7 +19,7 @@ public class Application extends CommonApplication {
     public static String PATH_AD_IMAGE;
     public static String PATH_DOWNLOAD;
     private static ExecutorService executorService;
-    private static List<ChannelInfo> channelInfoList = new ArrayList<>();
+    private static Map<String, List<ChannelInfo>> channelInfoMap = new HashMap<>();
 
     @Override
     public void onCreate() {
@@ -32,10 +34,14 @@ public class Application extends CommonApplication {
     }
 
     public static List<ChannelInfo> getChannelInfoList() {
-        return channelInfoList;
+        return channelInfoMap.get("channelInfoList");
     }
 
     public static void setChannelInfoList(List<ChannelInfo> channelInfoList) {
-        Application.channelInfoList = channelInfoList;
+        channelInfoMap.put("channelInfoList", channelInfoList);
+    }
+
+    public static void cleanChannelInfoList() {
+        channelInfoMap.clear();
     }
 }

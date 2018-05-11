@@ -9,6 +9,7 @@ import com.live.play.R;
 import com.live.play.pojo.SportEventInfo;
 import com.live.play.view.activity.PlaySportEventActivity;
 import com.px.common.adapter.BaseRecycleAdapter;
+import com.px.common.animator.Zoom;
 import com.px.common.constant.CommonApplication;
 import java.util.List;
 
@@ -40,21 +41,34 @@ public class SportEventAdapter extends BaseRecycleAdapter<SportEventViewHolder> 
     protected void bindHolder(SportEventViewHolder holder, int position) {
         final SportEventInfo sportEventInfo = sportEventInfoList.get(position);
         holder.tvTime.setText(sportEventInfo.getMatch_time());
-        holder.tvTeam1.setText(sportEventInfo.getMatch_master());
-        holder.tvTeam2.setText(sportEventInfo.getMatch_guest());
+        holder.tvTeam1.setText(sportEventInfo.getMatch_guest());
+        holder.tvTeam2.setText(sportEventInfo.getMatch_master());
         holder.rcvData.setLayoutManager(new GridLayoutManager(CommonApplication.getContext(), 5));
-        SportEventDataAdapter adapter = new SportEventDataAdapter(sportEventInfo.getTv_data());
-        holder.rcvData.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int i) {
-                SportEventInfo.TvData tvData = sportEventInfo.getTv_data().get(i);
-                Intent intent = new Intent(mContext, PlaySportEventActivity.class);
-                intent.putExtra("url", tvData.getMatch_tv_url());
-                mContext.startActivity(intent);
-            }
-        });
+        List<SportEventInfo.TvData> tvDataList = sportEventInfo.getTv_data();
+        if(tvDataList != null && tvDataList.size() >0) {
+            SportEventDataAdapter adapter = new SportEventDataAdapter(sportEventInfo.getTv_data());
+            holder.rcvData.setAdapter(adapter);
+            adapter.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int i) {
+                    SportEventInfo.TvData tvData = sportEventInfo.getTv_data().get(i);
+                    Intent intent = new Intent(mContext, PlaySportEventActivity.class);
+                    intent.putExtra("url", tvData.getMatch_tv_url());
+                    mContext.startActivity(intent);
+                }
+            });
+            adapter.setOnItemFocusListener(new BaseRecycleAdapter.OnItemFocusListener() {
+                @Override
+                public void onFocus(View view, int position, boolean hasFocus) {
+                    if(hasFocus){
+                        view.setSelected(true);
+                    }else{
+                        view.setSelected(false);
+                    }
+                }
+            });
+        }
     }
 
     @Override

@@ -277,6 +277,7 @@ public class PlayActivity extends AppCompatActivity implements SurfaceHolder.Cal
         send = false;
         releaseMediaPlayer();
         playManager.stopView(tag);
+        Application.cleanChannelInfoList();
     }
 
     private void showErrorReportDialog(){

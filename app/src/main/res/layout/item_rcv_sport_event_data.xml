@@ -25,7 +25,10 @@
         android:id="@+id/tvTVName"
         tool:text="sdfdsfds"
         android:textSize="12sp"
-        android:textColor="@android:color/white"
+        android:textColor="@drawable/text_select_red"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

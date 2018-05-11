@@ -26,7 +26,7 @@ public class ChannelType1Provider implements LoadServiceWithParam<List<ChannelTy
                 .enqueue(new StringListener() {
                     @Override
                     public void onSuccess(String s) throws IOException {
-                        Logger.d(s);
+//                        Logger.d(s);
                         ResultInfo<ChannelType1Info> resultInfo = new Gson().fromJson(s,
                                 new TypeToken<ResultInfo<ChannelType1Info>>(){}.getType());
                         if(resultInfo == null){

@@ -44,6 +44,7 @@
     <string name="confirm_exit">Do you confirm exit?</string>
     <string name="data_loading">Loading...</string>
     <string name="data_load_error">Load failure, please try again later</string>
+    <string name="sprot_event_data_load_error">No games available</string>
     <string name="favorite_load_empty">Favorites folder is empty</string>
     <string name="history_load_empty">History folder is empty</string>
     <string name="search_load_empty">No result match search</string>
@@ -53,7 +54,7 @@
     <string name="notice1">Please go to app market to download and install</string>
     <string name="back">PRESS BACK TO EXIT</string>
     <string name="skip_ad">SKIP ADS </string>
-    <string name="skip_ad1">JOIN GOLD PRO TO SKIP ALL ADS </string>
+    <string name="skip_ad1">JOIN MY VIP EXPERIENCE TO SKIP ALL ADS AND MORE</string>
     <string name="skip">SKIP</string>
     <string name="authority">PRESS BACK TO EXIT</string>
     <string name="notice2">You can enjoy 60 seconds preview in </string>

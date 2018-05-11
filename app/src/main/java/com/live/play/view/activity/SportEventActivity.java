@@ -38,9 +38,7 @@ public class SportEventActivity extends BaseActivity<SportEventPresenter> implem
     public void loadSportEvent(boolean upgrade, List<SportEventInfo> sportEventInfoList) {
         if(!upgrade){
             binding.pbLoading.setVisibility(View.GONE);
-            binding.tvLoading.setText(getString(R.string.data_load_error));
-            binding.btRetry.setVisibility(View.VISIBLE);
-            binding.btRetry.requestFocus();
+            binding.tvLoading.setText(getString(R.string.sprot_event_data_load_error));
             return;
         }
         binding.llLoading.setVisibility(View.GONE);

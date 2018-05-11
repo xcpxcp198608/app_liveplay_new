@@ -27,7 +27,7 @@ import java.util.List;
 
 public class PlayManager {
 
-    private List<ChannelInfo> channelInfoList;
+    private List<ChannelInfo> mChannelInfoList;
     private int currentPosition;
     private ChannelInfo channelInfo;
     private PlayListener mPlayListener;
@@ -38,11 +38,11 @@ public class PlayManager {
     private HistoryChannelDao historyChannelDao;
 
     public PlayManager(List<ChannelInfo> channelInfoList, int currentPosition) {
-        if(channelInfoList == null || channelInfoList.size() <= 0)
-        this.channelInfoList = channelInfoList;
+        if(channelInfoList == null || channelInfoList.size() <= 0) return;
+        this.mChannelInfoList = channelInfoList;
         this.currentPosition = currentPosition;
         historyChannelDao = HistoryChannelDao.getInstance();
-        channelInfo = channelInfoList.get(currentPosition);
+        channelInfo = mChannelInfoList.get(currentPosition);
         String levelStr = UserContentResolver.get("userLevel");
         try {
             level = Integer.parseInt(levelStr);
@@ -167,16 +167,22 @@ public class PlayManager {
     }
 
     public void previousChannel(){
+        if(mChannelInfoList == null || mChannelInfoList.size() <= 0){
+            return;
+        }
         currentPosition -- ;
-        if(currentPosition < 0) currentPosition = channelInfoList.size() - 1;
-        channelInfo = channelInfoList.get(currentPosition);
+        if(currentPosition < 0) currentPosition = mChannelInfoList.size() - 1;
+        channelInfo = mChannelInfoList.get(currentPosition);
         dispatchChannel();
     }
 
     public void nextChannel(){
+        if(mChannelInfoList == null || mChannelInfoList.size() <= 0){
+            return;
+        }
         currentPosition ++ ;
-        if(currentPosition >= channelInfoList.size()) currentPosition = 0;
-        channelInfo = channelInfoList.get(currentPosition);
+        if(currentPosition >= mChannelInfoList.size()) currentPosition = 0;
+        channelInfo = mChannelInfoList.get(currentPosition);
         dispatchChannel();
     }
 
