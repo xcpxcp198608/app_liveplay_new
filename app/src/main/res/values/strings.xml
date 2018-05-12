@@ -43,7 +43,7 @@
     <string name="app_no_install">Selected app not installed, please go to app market to download and install</string>
     <string name="confirm_exit">Do you confirm exit?</string>
     <string name="data_loading">Loading...</string>
-    <string name="data_load_error">Load failure, please try again later</string>
+    <string name="data_load_error">Unable to load contents, please check your internet and try again</string>
     <string name="sprot_event_data_load_error">No games available</string>
     <string name="favorite_load_empty">Favorites folder is empty</string>
     <string name="history_load_empty">History folder is empty</string>
