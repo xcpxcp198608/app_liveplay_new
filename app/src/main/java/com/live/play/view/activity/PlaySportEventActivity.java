@@ -12,6 +12,10 @@ import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.live.play.manager.PlayManager;
+import com.live.play.pojo.ChannelInfo;
+import com.px.common.utils.AESUtil;
 import com.px.common.utils.Logger;
 import com.px.common.utils.NetUtil;
 import com.px.common.utils.SPUtil;
@@ -20,19 +24,25 @@ import com.live.play.databinding.ActivityPlayBinding;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.List;
 
 /**
  * play
  */
 
-public class PlaySportEventActivity extends AppCompatActivity implements SurfaceHolder.Callback{
+public class PlaySportEventActivity extends AppCompatActivity implements SurfaceHolder.Callback, PlayManager.PlayListener{
 
     private ActivityPlayBinding binding;
     private SurfaceHolder surfaceHolder;
     private MediaPlayer mediaPlayer;
+
+    private PlayManager playManager;
     private boolean send = true;
     private String tag = "";
     private String url = "";
+    private String name = "";
+    private ChannelInfo channelInfo;
+    private int currentPlayPosition = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,15 +53,39 @@ public class PlaySportEventActivity extends AppCompatActivity implements Surface
         surfaceHolder.addCallback(this);
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         url = getIntent().getStringExtra("url");
+        name = getIntent().getStringExtra("name");
+        channelInfo = new ChannelInfo();
+        channelInfo.setUrl(url);
+        channelInfo.setName(name);
+        channelInfo.setLocked(true);
+        channelInfo.setType(1);
+        if(channelInfo == null) return;
+        playManager = new PlayManager(channelInfo);
+        playManager.setPlayListener(this);
+    }
+
+    @Override
+    public void play(String url) {
+        playVideo(PlayManager.parseUrl(url));
+    }
+
+    @Override
+    public void playAd() {
+
+    }
+
+    @Override
+    public void launchApp(String packageName) {
+
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        if (url.contains("protv.company")){
-            String streamToken = (String) SPUtil.get("streamToken", "123");
-            url = url.trim() + "?token=" + streamToken;
+        if(channelInfo != null) {
+            playManager.dispatchChannel();
+            tag = AESUtil.MD5(System.currentTimeMillis() + playManager.getChannelInfo().getName());
+            playManager.startView(tag);
         }
-        playVideo(url);
     }
 
     @Override
@@ -64,13 +98,14 @@ public class PlaySportEventActivity extends AppCompatActivity implements Surface
         releaseMediaPlayer();
     }
 
-    private void playVideo(final String url) {
+    private void playVideo(final List<String> urlList) {
         sendNetSpeed();
         binding.pbPlay.setVisibility(View.VISIBLE);
         try {
             if(mediaPlayer == null){
                 mediaPlayer = new MediaPlayer();
             }
+            String url = urlList.get(currentPlayPosition);
             Logger.d(url);
             mediaPlayer.reset();
             mediaPlayer.setDataSource(url);
@@ -103,7 +138,7 @@ public class PlaySportEventActivity extends AppCompatActivity implements Surface
                 @Override
                 public boolean onError(MediaPlayer mp, int what, int extra) {
                     Logger.d("error");
-                    playVideo(url);
+                    playOtherUrlOnVideo(urlList);
                     binding.tvNetSpeed.setVisibility(View.VISIBLE);
                     return true;
                 }
@@ -112,7 +147,7 @@ public class PlaySportEventActivity extends AppCompatActivity implements Surface
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     Logger.d("completion");
-                    playVideo(url);
+                    playOtherUrlOnVideo(urlList);
                 }
             });
             mediaPlayer.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
@@ -124,6 +159,15 @@ public class PlaySportEventActivity extends AppCompatActivity implements Surface
         } catch (IOException e) {
             Logger.d(e.getMessage());
         }
+    }
+
+
+    private void playOtherUrlOnVideo(List<String> urlList){
+        currentPlayPosition ++;
+        if(currentPlayPosition >= urlList.size()){
+            currentPlayPosition =0 ;
+        }
+        playVideo(urlList);
     }
 
     private void releaseMediaPlayer(){

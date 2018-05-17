@@ -8,7 +8,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 208
-        versionName "v2.0.8"
+        versionName "v2.0.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -65,6 +65,10 @@ android {
             dirs 'libs'
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 static def releaseTime() {
@@ -85,5 +89,7 @@ dependencies {
     compile 'com.paypal.sdk:paypal-android-sdk:2.15.3'
     compile 'com.afollestad.material-dialogs:commons:0.9.5.0'
 
-    implementation 'com.px.library:module_common:1.0.0'
+    implementation 'com.px.library:module_common:1.0.1'
+
+    compile 'com.github.lygttpod:SuperTextView:2.1.7'
 }

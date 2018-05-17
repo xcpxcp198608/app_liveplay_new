@@ -3,7 +3,6 @@ package com.live.play.instance;
 import com.px.common.constant.CommonApplication;
 import com.live.play.pojo.ChannelInfo;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +22,7 @@ public class Application extends CommonApplication {
 
     @Override
     public void onCreate() {
+        super.setHandleCrash(false);
         super.onCreate();
         PATH_AD_IMAGE = getExternalFilesDir("ad_images").getAbsolutePath();
         PATH_DOWNLOAD = getExternalFilesDir("download").getAbsolutePath();

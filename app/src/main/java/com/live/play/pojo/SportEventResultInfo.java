@@ -7,12 +7,12 @@ import java.util.List;
  * create time : 11:28 AM
  */
 
-public class SportEventResultInfo {
+public class SportEventResultInfo<T> {
 
     private int error_code;
     private String error_msg;
     private int match_total;
-    private List<SportEventInfo> data;
+    private List<T> data;
 
     public int getError_code() {
         return error_code;
@@ -38,11 +38,11 @@ public class SportEventResultInfo {
         this.match_total = match_total;
     }
 
-    public List<SportEventInfo> getData() {
+    public List<T> getData() {
         return data;
     }
 
-    public void setData(List<SportEventInfo> data) {
+    public void setData(List<T> data) {
         this.data = data;
     }
 

@@ -32,6 +32,7 @@ public final class Constant {
 
 
         public static final String sports_event = "http://apius.protv.company/v1/sports/get_match.do?token=41892a3cde2fe83ca98db7df9b81b3d5&id=";
+        public static final String sports_event_scores = "http://apius.protv.company/v1/sports/get_scores.do?token=1a45b394f3692ec146ef4216c8f02c7d";
 
     }
 

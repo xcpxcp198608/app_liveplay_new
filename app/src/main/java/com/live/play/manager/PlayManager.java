@@ -1,6 +1,7 @@
 package com.live.play.manager;
 
 import android.text.TextUtils;
+import android.widget.TextView;
 
 import com.px.common.constant.CommonApplication;
 import com.px.common.http.HttpMaster;
@@ -36,6 +37,7 @@ public class PlayManager {
     private static final int DURATION_MINUTE = (int) (DURATION / 1000 / 60);
     private String experience;
     private HistoryChannelDao historyChannelDao;
+    private boolean decrypt = true;
 
     public PlayManager(List<ChannelInfo> channelInfoList, int currentPosition) {
         if(channelInfoList == null || channelInfoList.size() <= 0) return;
@@ -43,6 +45,19 @@ public class PlayManager {
         this.currentPosition = currentPosition;
         historyChannelDao = HistoryChannelDao.getInstance();
         channelInfo = mChannelInfoList.get(currentPosition);
+        String levelStr = UserContentResolver.get("userLevel");
+        try {
+            level = Integer.parseInt(levelStr);
+        }catch (Exception e){
+            level = 1;
+        }
+        experience = UserContentResolver.get("experience");
+    }
+
+    public PlayManager(ChannelInfo channelInfo) {
+        if(channelInfo == null) return;
+        this.decrypt = false;
+        this.channelInfo = channelInfo;
         String levelStr = UserContentResolver.get("userLevel");
         try {
             level = Integer.parseInt(levelStr);
@@ -120,8 +135,13 @@ public class PlayManager {
 
     private void handlePlay(){
         int type = channelInfo.getType();
-        historyChannelDao.insertOrUpdate(channelInfo);
-        String url = AESUtil.decrypt(channelInfo.getUrl(), AESUtil.KEY);
+        if(historyChannelDao != null) {
+            historyChannelDao.insertOrUpdate(channelInfo);
+        }
+        String url = channelInfo.getUrl();
+        if(decrypt) {
+            url = AESUtil.decrypt(channelInfo.getUrl(), AESUtil.KEY);
+        }
         if(type == 1){ //live
             if(mPlayListener != null) mPlayListener.play(url);
         }else if(type == 3) { //relay
@@ -191,8 +211,12 @@ public class PlayManager {
         String username = UserContentResolver.get("userName");
         if(TextUtils.isEmpty(username)) username = "default";
         String country = getChannelInfo().getCountry();
-        if(country.contains("&")){
-            country = country.replaceAll("&", " ");
+        if(TextUtils.isEmpty(country)){
+            country = "";
+        }else {
+            if (country.contains("&")) {
+                country = country.replaceAll("&", " ");
+            }
         }
         String name = getChannelInfo().getName();
         if(name.contains("&")){

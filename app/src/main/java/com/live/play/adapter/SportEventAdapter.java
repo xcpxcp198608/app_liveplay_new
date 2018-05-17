@@ -21,12 +21,12 @@ public class SportEventAdapter extends BaseRecycleAdapter<SportEventViewHolder> 
 
     private List<SportEventInfo> sportEventInfoList;
     private Context mContext;
-    private String key;
+    private int flag;
 
-    public SportEventAdapter(Context context, List<SportEventInfo> sportEventInfoList, String key) {
+    public SportEventAdapter(Context context, List<SportEventInfo> sportEventInfoList, int flag) {
         this.sportEventInfoList = sportEventInfoList;
         this.mContext = context;
-        this.key = key;
+        this.flag = flag;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class SportEventAdapter extends BaseRecycleAdapter<SportEventViewHolder> 
         holder.tvTeam2.setText(sportEventInfo.getMatch_master());
         holder.rcvData.setLayoutManager(new GridLayoutManager(CommonApplication.getContext(), 5));
 
-        if("36".equals(key)){
+        if(flag == 4){
             holder.tvVS.setVisibility(View.GONE);
         }
 
@@ -55,11 +55,13 @@ public class SportEventAdapter extends BaseRecycleAdapter<SportEventViewHolder> 
         if(tvDataList != null && tvDataList.size() >0) {
             SportEventDataAdapter adapter = new SportEventDataAdapter(sportEventInfo.getTv_data());
             holder.rcvData.setAdapter(adapter);
+            adapter.setZoom(false);
             adapter.setOnItemClickListener(new OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int i) {
                     SportEventInfo.TvData tvData = sportEventInfo.getTv_data().get(i);
                     Intent intent = new Intent(mContext, PlaySportEventActivity.class);
+                    intent.putExtra("name", tvData.getMatch_tv_name());
                     intent.putExtra("url", tvData.getMatch_tv_url());
                     mContext.startActivity(intent);
                 }
