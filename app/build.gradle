@@ -92,4 +92,5 @@ dependencies {
     implementation 'com.px.library:module_common:1.0.1'
 
     compile 'com.github.lygttpod:SuperTextView:2.1.7'
+    implementation 'com.gongwen:marqueelibrary:1.1.3'
 }

@@ -10,6 +10,7 @@ import com.live.play.databinding.ActivitySportEventBinding;
 import com.live.play.pojo.SportEventInfo;
 import com.live.play.pojo.SportEventScoresInfo;
 import com.live.play.presenter.SportEventPresenter;
+import com.live.play.view.custom_view.SportScoresMarqueeFactory;
 import com.px.common.utils.Logger;
 
 import java.util.List;
@@ -65,31 +66,42 @@ public class SportEventActivity extends BaseActivity<SportEventPresenter> implem
     @Override
     public void loadSportEventScores(boolean upgrade, final List<SportEventScoresInfo> sportEventScoresInfoList) {
         if (upgrade && sportEventScoresInfoList != null && sportEventScoresInfoList.size() > 0){
-            refreshScores(sportEventScoresInfoList.get(0));
-            disposable = Observable.interval(2000, TimeUnit.MILLISECONDS)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Consumer<Object>() {
-                        @Override
-                        public void accept(Object o) throws Exception {
-                            if (currentPosition >= sportEventScoresInfoList.size()) {
-                                currentPosition = 0;
-                            }
-                            SportEventScoresInfo scoresInfo = sportEventScoresInfoList.get(currentPosition);
-                            refreshScores(scoresInfo);
-                            currentPosition++;
-                        }
-                    });
+//            refreshScores(sportEventScoresInfoList.get(0));
+//            disposable = Observable.interval(2000, TimeUnit.MILLISECONDS)
+//                    .subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(new Consumer<Object>() {
+//                        @Override
+//                        public void accept(Object o) throws Exception {
+//                            if (currentPosition >= sportEventScoresInfoList.size()) {
+//                                currentPosition = 0;
+//                            }
+//                            SportEventScoresInfo scoresInfo = sportEventScoresInfoList.get(currentPosition);
+//                            refreshScores(scoresInfo);
+//                            currentPosition++;
+//                        }
+//                    });
+            SportScoresMarqueeFactory scoresMarqueeFactory = new SportScoresMarqueeFactory(this);
+            scoresMarqueeFactory.setData(sportEventScoresInfoList);
+            binding.marqueeView.setMarqueeFactory(scoresMarqueeFactory);
+            binding.marqueeView.startFlipping();
+
         }
     }
 
     private void refreshScores(SportEventScoresInfo scoresInfo){
-        binding.stvScores.setLeftString(scoresInfo.getMatch_type());
-        binding.stvScores.setLeftBottomString(scoresInfo.getMatch_time());
-        binding.stvScores.setCenterTopString(scoresInfo.getMatch_guest());
-        binding.stvScores.setCenterString(scoresInfo.getMatch_guest_score());
-        binding.stvScores.setRightTopString(scoresInfo.getMatch_master());
-        binding.stvScores.setRightString(scoresInfo.getMatch_master_score());
+//        binding.stvScores.setLeftString(scoresInfo.getMatch_type());
+//        binding.stvScores.setLeftBottomString(scoresInfo.getMatch_time());
+//        binding.stvScores.setCenterTopString(scoresInfo.getMatch_guest());
+//        binding.stvScores.setCenterString(scoresInfo.getMatch_guest_score());
+//        binding.stvScores.setRightTopString(scoresInfo.getMatch_master());
+//        binding.stvScores.setRightString(scoresInfo.getMatch_master_score());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        binding.marqueeView.stopFlipping();
     }
 
     @Override

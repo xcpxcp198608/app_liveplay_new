@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:stv="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,46 +9,57 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="65dp"
         android:id="@+id/rcvSportEvent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/stvScores"
-        android:layout_gravity="bottom|center"
-        android:layout_width="600dp"
-        android:layout_height="70dp"
+    <com.gongwen.marqueen.MarqueeView
+        android:id="@+id/marqueeView"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="5dp"
+        android:flipInterval="2200"
+        android:inAnimation="@anim/in_bottom"
+        android:outAnimation="@anim/out_top"
+        app:marqueeAnimDuration="2000"/>
 
-        stv:sDividerLineType="none"
-        stv:sCenterSpaceHeight="1dp"
-        stv:sBackgroundDrawableRes="@color/colorTranslucent"
-        stv:sLeftTextString=""
-        stv:sLeftTextColor="@android:color/holo_red_light"
-        stv:sLeftTextSize="25sp"
-        stv:sLeftBottomTextString=""
-        stv:sLeftBottomTextColor="@android:color/darker_gray"
-        stv:sLeftBottomTextSize="15sp"
+    <!--<com.allen.library.SuperTextView-->
+        <!--android:id="@+id/stvScores"-->
+        <!--android:layout_gravity="bottom|center"-->
+        <!--android:layout_width="600dp"-->
+        <!--android:layout_height="70dp"-->
 
-        stv:sCenterTopTextColor="@color/colorWhite"
-        stv:sCenterTopTextString=""
-        stv:sCenterTopLines="1"
-        stv:sCenterTopMaxEms="20"
-        stv:sCenterTopTextSize="18sp"
-        stv:sCenterTextColor="@android:color/holo_orange_light"
-        stv:sCenterTextString=""
-        stv:sCenterTextSize="20sp"
-        stv:sCenterViewGravity="center"
+        <!--stv:sDividerLineType="none"-->
+        <!--stv:sCenterSpaceHeight="1dp"-->
+        <!--stv:sBackgroundDrawableRes="@color/colorTranslucent"-->
+        <!--stv:sLeftTextString=""-->
+        <!--stv:sLeftTextColor="@android:color/holo_red_light"-->
+        <!--stv:sLeftTextSize="25sp"-->
+        <!--stv:sLeftBottomTextString=""-->
+        <!--stv:sLeftBottomTextColor="@android:color/darker_gray"-->
+        <!--stv:sLeftBottomTextSize="15sp"-->
 
-        stv:sRightTopTextColor="@color/colorWhite"
-        stv:sRightTopTextString=""
-        stv:sRightTopLines="1"
-        stv:sRightTopMaxEms="20"
-        stv:sRightTopTextSize="18sp"
-        stv:sRightTextColor="@android:color/holo_orange_light"
-        stv:sRightTextString=""
-        stv:sRightTextSize="20sp"
-        stv:sRightViewGravity="center" />
+        <!--stv:sCenterTopTextColor="@color/colorWhite"-->
+        <!--stv:sCenterTopTextString=""-->
+        <!--stv:sCenterTopLines="1"-->
+        <!--stv:sCenterTopMaxEms="20"-->
+        <!--stv:sCenterTopTextSize="18sp"-->
+        <!--stv:sCenterTextColor="@android:color/holo_orange_light"-->
+        <!--stv:sCenterTextString=""-->
+        <!--stv:sCenterTextSize="20sp"-->
+        <!--stv:sCenterViewGravity="center"-->
+
+        <!--stv:sRightTopTextColor="@color/colorWhite"-->
+        <!--stv:sRightTopTextString=""-->
+        <!--stv:sRightTopLines="1"-->
+        <!--stv:sRightTopMaxEms="20"-->
+        <!--stv:sRightTopTextSize="18sp"-->
+        <!--stv:sRightTextColor="@android:color/holo_orange_light"-->
+        <!--stv:sRightTextString=""-->
+        <!--stv:sRightTextSize="20sp"-->
+        <!--stv:sRightViewGravity="center" />-->
 
     <LinearLayout
         android:id="@+id/llLoading"
