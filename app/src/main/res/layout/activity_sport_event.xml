@@ -16,6 +16,7 @@
 
     <com.gongwen.marqueen.MarqueeView
         android:id="@+id/marqueeView"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal|bottom"

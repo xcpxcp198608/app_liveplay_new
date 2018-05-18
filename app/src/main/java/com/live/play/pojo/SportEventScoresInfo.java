@@ -15,6 +15,7 @@ public class SportEventScoresInfo {
     private String match_guest_score;
     private String match_master;
     private String match_master_score;
+    private String match_status_code;
 
     public String getMatch_type() {
         return match_type;
@@ -64,6 +65,14 @@ public class SportEventScoresInfo {
         this.match_master_score = match_master_score;
     }
 
+    public String getMatch_status_code() {
+        return match_status_code;
+    }
+
+    public void setMatch_status_code(String match_status_code) {
+        this.match_status_code = match_status_code;
+    }
+
     @Override
     public String toString() {
         return "SportEventScoresInfo{" +
@@ -73,6 +82,7 @@ public class SportEventScoresInfo {
                 ", match_guest_score='" + match_guest_score + '\'' +
                 ", match_master='" + match_master + '\'' +
                 ", match_master_score='" + match_master_score + '\'' +
+                ", match_status_code='" + match_status_code + '\'' +
                 '}';
     }
 }

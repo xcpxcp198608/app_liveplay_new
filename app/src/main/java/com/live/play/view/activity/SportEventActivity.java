@@ -85,7 +85,9 @@ public class SportEventActivity extends BaseActivity<SportEventPresenter> implem
             scoresMarqueeFactory.setData(sportEventScoresInfoList);
             binding.marqueeView.setMarqueeFactory(scoresMarqueeFactory);
             binding.marqueeView.startFlipping();
-
+            binding.marqueeView.setVisibility(View.VISIBLE);
+        }else{
+            binding.marqueeView.setVisibility(View.GONE);
         }
     }
 
