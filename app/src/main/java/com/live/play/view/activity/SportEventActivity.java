@@ -44,6 +44,11 @@ public class SportEventActivity extends BaseActivity<SportEventPresenter> implem
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sport_event);
         key = getIntent().getStringExtra("key");
         flag = getIntent().getIntExtra("flag", 3);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         presenter.load(key);
         presenter.loadScores();
     }

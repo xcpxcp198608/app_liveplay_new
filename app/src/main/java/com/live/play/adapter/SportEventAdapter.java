@@ -42,6 +42,7 @@ public class SportEventAdapter extends BaseRecycleAdapter<SportEventViewHolder> 
     @Override
     protected void bindHolder(SportEventViewHolder holder, int position) {
         final SportEventInfo sportEventInfo = sportEventInfoList.get(position);
+        holder.setIsRecyclable(false);
         holder.tvTime.setText(sportEventInfo.getMatch_time());
         holder.tvTeam1.setText(sportEventInfo.getMatch_guest());
         holder.tvTeam2.setText(sportEventInfo.getMatch_master());
@@ -52,7 +53,7 @@ public class SportEventAdapter extends BaseRecycleAdapter<SportEventViewHolder> 
         }
 
         List<SportEventInfo.TvData> tvDataList = sportEventInfo.getTv_data();
-        if(tvDataList != null && tvDataList.size() >0) {
+        if(tvDataList != null && tvDataList.size() > 0) {
             SportEventDataAdapter adapter = new SportEventDataAdapter(sportEventInfo.getTv_data());
             holder.rcvData.setAdapter(adapter);
             adapter.setZoom(false);
@@ -69,9 +70,9 @@ public class SportEventAdapter extends BaseRecycleAdapter<SportEventViewHolder> 
             adapter.setOnItemFocusListener(new BaseRecycleAdapter.OnItemFocusListener() {
                 @Override
                 public void onFocus(View view, int position, boolean hasFocus) {
-                    if(hasFocus){
+                    if (hasFocus) {
                         view.setSelected(true);
-                    }else{
+                    } else {
                         view.setSelected(false);
                     }
                 }

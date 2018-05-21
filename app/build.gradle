@@ -7,7 +7,7 @@ android {
         applicationId "com.live.play"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 208
+        versionCode 209
         versionName "v2.0.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -89,7 +89,7 @@ dependencies {
     compile 'com.paypal.sdk:paypal-android-sdk:2.15.3'
     compile 'com.afollestad.material-dialogs:commons:0.9.5.0'
 
-    implementation 'com.px.library:module_common:1.0.1'
+    implementation 'com.px.library:module_common:1.0.3'
 
     compile 'com.github.lygttpod:SuperTextView:2.1.7'
     implementation 'com.gongwen:marqueelibrary:1.1.3'

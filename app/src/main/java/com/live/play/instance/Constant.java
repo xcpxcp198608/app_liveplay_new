@@ -31,8 +31,8 @@ public final class Constant {
         public static final String danmu_url = "http://blive.bvision.live:8804/html/danmu.html";
 
 
-        public static final String sports_event = "http://apius.protv.company/v1/sports/get_match.do?token=41892a3cde2fe83ca98db7df9b81b3d5&id=";
-        public static final String sports_event_scores = "http://apius.protv.company/v1/sports/get_scores.do?token=1a45b394f3692ec146ef4216c8f02c7d";
+        public static final String sports_event = "http://ldservice.ldlegacy.com/ldservice/events/";
+        public static final String sports_event_scores = "http://ldservice.ldlegacy.com/ldservice/events/scores";
 
     }
 

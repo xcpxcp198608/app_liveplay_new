@@ -36,9 +36,14 @@ public class SportEventDataAdapter extends BaseRecycleAdapter<SportEventDataView
     @Override
     protected void bindHolder(SportEventDataViewHolder holder, int position) {
         SportEventInfo.TvData tvData = tvDataList.get(position);
-        holder.tvTVName.setText(tvData.getMatch_tv_name());
-        ImageMaster.load(tvData.getMatch_tv_icon(), holder.ivTVIcon, R.drawable.img_hold1 ,
-                R.drawable.img_hold1);
+        if(tvData != null) {
+            holder.tvTVName.setText(tvData.getMatch_tv_name());
+            ImageMaster.load(tvData.getMatch_tv_icon(), holder.ivTVIcon, R.drawable.img_hold1,
+                    R.drawable.img_hold1);
+            holder.llSportEventData.setVisibility(View.VISIBLE);
+        }else{
+            holder.llSportEventData.setVisibility(View.GONE);
+        }
     }
 
     @Override
