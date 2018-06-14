@@ -49,6 +49,7 @@ public final class Constant {
         public static final String popcom = "pct.droid";
         public static final String access = "com.wiatec.update";
         public static final String ld_service = "com.wiatec.ldservice";
+        public static final String ld_extension = "com.wiatec.ldextension";
     }
 
 

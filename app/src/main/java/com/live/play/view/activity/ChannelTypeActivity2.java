@@ -62,7 +62,11 @@ public class ChannelTypeActivity2 extends BaseActivity<ChannelType2Presenter> im
             @Override
             public void onItemClick(View view, int position) {
                 ChannelType2Info channelType2Info = channelType2InfoList.get(position);
-                if(channelType2Info.getFlag() == 3 || channelType2Info.getFlag() == 4){
+                if(channelType2Info.getFlag() == 5){
+                    if(AppUtil.isInstalled(Constant.packageName.ld_extension)) {
+                        lunchExtension(Integer.parseInt(channelType2Info.getUrl()));
+                    }
+                }else if(channelType2Info.getFlag() == 3 || channelType2Info.getFlag() == 4){
                     Intent intent = new Intent(ChannelTypeActivity2.this, SportEventActivity.class);
                     intent.putExtra("key", channelType2Info.getTag());
                     intent.putExtra("flag", channelType2Info.getFlag());
@@ -78,6 +82,14 @@ public class ChannelTypeActivity2 extends BaseActivity<ChannelType2Presenter> im
                 }
             }
         });
+    }
+
+    private void lunchExtension(int type){
+        try {
+            Intent intent = new Intent("com.wiatec.ldextension.view.activity.MainActivity");
+            intent.putExtra("router_type", type);
+            startActivity(intent);
+        }catch (Exception e){}
     }
 
 }

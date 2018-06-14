@@ -35,6 +35,9 @@ public class ChannelType1Adapter extends BaseRecycleAdapter<ChannelType1ViewHold
     protected void bindHolder(final ChannelType1ViewHolder holder, final int position) {
         ChannelType1Info channelType1Info = channelType1InfoList.get(position);
         holder.textView.setText(channelType1Info.getName());
+        if("LIVE TV".equals(channelType1Info.getType())){
+            holder.textView.setVisibility(View.GONE);
+        }
         ImageMaster.load(channelType1Info.getUrl(), holder.imageView, R.drawable.bg_button_holder,
                 R.drawable.bg_button_holder);
     }

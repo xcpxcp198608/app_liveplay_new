@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.live.play.pojo.ChannelInfo;
 import com.px.common.adapter.BaseRecycleAdapter;
 import com.px.common.animator.Zoom;
 import com.px.common.http.HttpMaster;
@@ -330,11 +331,23 @@ public class ChannelTypeActivity extends BaseActivity<ChannelTypePresenter> impl
             }else{
                 showInstallNoticeDialog("Access2.0", Constant.url.access, Constant.packageName.access);
             }
+        }else if(channelTypeInfo.getFlag() == 4){
+            if(AppUtil.isInstalled(Constant.packageName.ld_extension)) {
+                lunchExtension(Integer.parseInt(channelTypeInfo.getIcon()));
+            }
         }else {
             Intent intent = new Intent(ChannelTypeActivity.this, ChannelActivity.class);
             intent.putExtra(Constant.key.channel_type, channelTypeInfo.getTag());
             startActivity(intent);
         }
+    }
+
+    private void lunchExtension(int type){
+        try {
+            Intent intent = new Intent("com.wiatec.ldextension.view.activity.MainActivity");
+            intent.putExtra("router_type", type);
+            startActivity(intent);
+        }catch (Exception e){}
     }
 
     private void showInstallNoticeDialog(String name, final String url, final String packageName){

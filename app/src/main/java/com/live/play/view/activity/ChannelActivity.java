@@ -19,6 +19,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.px.common.adapter.BaseRecycleAdapter;
 import com.px.common.animator.Zoom;
 import com.px.common.http.pojo.ResultInfo;
+import com.px.common.utils.AESUtil;
+import com.px.common.utils.AppUtil;
 import com.px.common.utils.EmojiToast;
 import com.px.common.utils.Logger;
 import com.px.common.utils.SPUtil;
@@ -215,12 +217,18 @@ public class ChannelActivity extends BaseActivity<ChannelPresenter> implements C
         channelAdapter.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                int style = channelInfoList.get(position).getStyle();
+                ChannelInfo channelInfo = channelInfoList.get(position);
                 Application.setChannelInfoList(channelInfoList);
-                if(style == 1){
+                if(channelInfo.getStyle() == 1){
                     launchFMPlay(channelInfoList, position);
                 }else {
-                    launchPlay(channelInfoList, position);
+                    if(channelInfo.getType() == 4){
+                        if(AppUtil.isInstalled(Constant.packageName.ld_extension)) {
+                            lunchExtension(channelInfo);
+                        }
+                    }else {
+                        launchPlay(channelInfoList, position);
+                    }
                 }
             }
         });
@@ -297,6 +305,14 @@ public class ChannelActivity extends BaseActivity<ChannelPresenter> implements C
             return;
         }
         presenter.verifyPay(payerName, liveChannelInfo.getUserId(), "");
+    }
+
+    private void lunchExtension(ChannelInfo channelInfo){
+        try {
+            Intent intent = new Intent("com.wiatec.ldextension.view.activity.MainActivity");
+            intent.putExtra("router_type", Integer.parseInt(AESUtil.decrypt(channelInfo.getUrl(), AESUtil.KEY)));
+            startActivity(intent);
+        }catch (Exception e){}
     }
 
     @Override

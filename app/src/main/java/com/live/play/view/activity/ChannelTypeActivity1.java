@@ -72,9 +72,22 @@ public class ChannelTypeActivity1 extends BaseActivity<ChannelType1Presenter> im
                     Intent intent = new Intent(ChannelTypeActivity1.this, ChannelTypeActivity2.class);
                     intent.putExtra("type", channelType1Info.getTag());
                     startActivity(intent);
+                }else if(channelType1Info.getFlag() == 4){
+                    if(AppUtil.isInstalled(Constant.packageName.ld_extension)) {
+                        lunchExtension(Integer.parseInt(channelType1Info.getName()));
+                    }
                 }
             }
         });
+
+    }
+
+    private void lunchExtension(int type){
+        try {
+            Intent intent = new Intent("com.wiatec.ldextension.view.activity.MainActivity");
+            intent.putExtra("router_type", type);
+            startActivity(intent);
+        }catch (Exception e){}
     }
 
 }
