@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -166,12 +167,22 @@ public class PlayActivity extends AppCompatActivity implements SurfaceHolder.Cal
     @Override
     public void launchApp(String packageName) {
         if(AppUtil.isInstalled(packageName)) {
+            if("com.nitroxenon.terrarium".equals(packageName) && !is20250920Rom()){
+                EmojiToast.showLong("Please update the ROM to the latest version", EmojiToast.EMOJI_SMILE);
+                return;
+            }
             AppUtil.launchApp(PlayActivity.this, packageName);
         }else{
             EmojiToast.show(getString(R.string.notice1), EmojiToast.EMOJI_SAD);
             AppUtil.launchApp(PlayActivity.this, Constant.packageName.market);
         }
         finish();
+    }
+
+    public boolean is20250920Rom(){
+        long buildTime = Build.TIME;
+        long targetTime = 1758297600000L;//2025/9/20 00:00:00
+        return buildTime >= targetTime;
     }
 
     private void playVideo(final List<String> urlList) {
